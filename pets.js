@@ -9,10 +9,6 @@ function createPets (puesto, dni, precio) {
     return [img, puesto, dni, precio];    
 }
 
-const changeHidden = (number) => {
-    document.querySelector(".key-data").value = number;
-}
-
 for (let i = 1; i <= 15; i++) {
     //Creacion de las propiedades de la función createPets para que en cada iteración se complete con su respectivo dato.
     let creacionDni = Math.round(Math.random()*10000000);
@@ -21,7 +17,9 @@ for (let i = 1; i <= 15; i++) {
     let pet = createPets(i, creacionDni, creacionPrecio);
     //Una vez que ya tengo todas las propiedades de la función para cada mascota generadas, tengo que generar los div.
     let div = document.createElement("DIV");
-    div.addEventListener("click", () => {changeHidden(creacionDni)});
+    div.addEventListener("click", () => {
+        document.querySelector(".key-data").value = creacionDni;
+    });
     div.tabIndex = i;
     div.classList.add(`item-${i}`,"flex-item");
     div.innerHTML = pet[0] +  pet[1] +  pet[2] + pet[3];
